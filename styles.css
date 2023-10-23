@@ -1,0 +1,235 @@
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+img {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+
+h2 {
+    font-size: 56px;
+    color: #ffffff;
+}
+
+p {
+    font-size: 22px;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff
+}
+
+h1, h2, p {
+    animation-name: fadeInUp;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.nav-container h1 {
+    animation: none;
+    opacity: 1; /* Reset the opacity to ensure it is fully visible */
+}
+
+h1 a {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: -30px;
+    margin-bottom: -30px;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* This makes sure the h1 and the nav list are spaced apart */
+    align-items: center; /* Aligns items vertically in the center */
+    padding: 20px;
+    background-color: #282C6A;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+    flex-shrink: 0; /* Prevents the h1 from shrinking if the nav takes more space */
+}
+
+.nav-list-wrapper {
+    display: flex;
+    justify-content: center; /* Center aligns the nav list */
+    flex-grow: 1; /* Allows the nav-list-wrapper to take up all available space */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero {
+    display: flex;
+    justify-content: space-evenly; /* This will create maximum space between the text and the image, effectively keeping the image on the far right side. */
+    align-items: center;
+    background: linear-gradient(to right, #282C6A 100px, 768px, #484EA9 1152px, #282C6A 1728px);
+    color: #fff;
+    padding: 100px 0;
+}
+
+.home-page .hero-text p:first-of-type {
+    flex: 1;
+    text-align: left;  /* left-align the text */
+    color: #C2BAFF;  /* set the text color */
+    font-weight: 600;  /* make the text semi-bold */
+    margin-bottom: -28px;  /* give it some space below before the h2 */
+    max-width: 239px;
+    letter-spacing: 1px; /* increase the space between letters */
+}
+
+
+.hero-text {
+    flex: 1;
+    text-align: left;  /* left-align the text */
+    max-width: 473px;  /* maximum width of the text box */
+    margin-left: 15%;  /* 15% of the parent's width */
+    margin-right: 8%;  /* reduced margin to keep similar ratio as previously */
+}
+
+.hero-text h2{
+    font-size: 56px;
+    margin-bottom: 37px;
+}
+
+.hero-text img {
+    max-width: 70px;
+    height: auto;  /* Maintain the image's aspect ratio */
+    border-radius: 50px;
+    animation: fadeInUp;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+.clinical-research-page .hero-text img {
+    max-width: 70px;
+    height: auto;  /* Maintain the image's aspect ratio */
+    border-radius: 50px;
+    margin-bottom: -20px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-right: 5%;
+}
+
+
+.hero-image img {
+    max-width: 500px;
+    height: auto;  /* Maintain the image's aspect ratio */
+    border-radius: 10%;
+}
+
+.clinical-research-page .hero-image img {
+    margin-top: -200px;
+}
+
+.content-wrapper {
+    background: linear-gradient(to right, #282C6A 100px, 768px, #484EA9 1152px, #282C6A 1728px);
+    position: relative;
+    padding-bottom: 40px;
+}
+
+footer {
+    background-color: #C2BAFF;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 60px; /* Adjusted the left/right padding to 60px */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+    right: 60px;
+    z-index: 1;
+}
+
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 1200px) {
+    .hero-text {
+        margin-left: 10%; /* Reduced margin for smaller screens */
+        margin-right: 5%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .hero-text {
+        margin-left: 7%; /* Further reduced margin for even smaller screens */
+        margin-right: 4%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .hero {
+        flex-direction: column; /* Stack text and image vertically on very small screens */
+    }
+
+    .hero-text, .hero-image {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center; /* Center-align text for mobile layout */
+    }
+
+    .hero-text p:first-of-type {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .clinical-research-page .hero-image img {
+        margin-top: 0;
+    }
+    
+}
+
