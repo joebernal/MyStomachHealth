@@ -7,7 +7,7 @@ window.addEventListener("scroll", function() {
     var scrollY = window.scrollY;
 
     // If we've scrolled past 85px, add the 'small-navbar' class
-    if (window.scrollY >= 10) {
+    if (window.scrollY >= 40) {
         navbar.classList.add("small-navbar");
     }
     
@@ -17,4 +17,13 @@ window.addEventListener("scroll", function() {
     }
 });
 
+function toggleNavMenu() {
+    const navWrapper = document.querySelector('.nav-list-wrapper');
+    const navToggle = document.querySelector('.nav-toggle');
 
+    // Toggle the show class on the nav list
+    navWrapper.classList.toggle('show');
+
+    // Toggle the active class on the button
+    navToggle.classList.toggle('active');
+}

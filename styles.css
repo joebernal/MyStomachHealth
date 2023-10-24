@@ -1,10 +1,12 @@
 @keyframes fadeInUp {
     0% {
         opacity: 0;
+        visibility: hidden;
         transform: translateY(30px);
     }
     100% {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
     }
 }
@@ -12,12 +14,34 @@
 @keyframes fadeIn {
     from {
         opacity: 0;
+        visibility: hidden;
     }
     to {
         opacity: 1;
+        visibility: visible;
     }
 }
 
+html, body {
+    background-color: #282C6A;
+}
+
+.nav-container {
+    display: flex;
+    position: fixed;
+    height:85px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background-color: #fff; 
+    justify-content: space-between; /* This makes sure the h1 and the nav list are spaced apart */
+    align-items: center; /* Aligns items vertically in the center */
+    padding: 20px;
+    background-color: rgb(40, 44, 106, 0.05);
+    color: #fff;
+    transition: all 0.3s ease; /* smooth transition for size and background change */
+}
 
 .nav-container.small-navbar {
     height: 17px; /* smaller height */
@@ -25,7 +49,54 @@
     transition: all 0.3s ease; /* smooth transition for size and background change */
 }
 
+/* Add styles for the new button */
+.nav-toggle {
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40px;
+    width: 72px;
+    background-color: #8A8AFF;
+    border: none;
+    cursor: pointer;
+    box-shadow: none;
+    border-top-left-radius: 35px;
+    border-bottom-left-radius: 35px;
+    transition: all 0.3s ease;
+}
 
+.nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background-color: white;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-toggle span:nth-child(1) {
+    transform: translate(10px, 5px);
+}
+
+.nav-toggle span:nth-child(2) {
+    transform: translateX(10px); /* adjust this value to move the middle bar to the right */
+}
+
+.nav-toggle span:nth-child(3) {
+    transform: translate(10px, -6px); /* adjust this value to move the bottom bar down */
+}
+
+
+/* Styles when the button is active (e.g., when the nav menu is open) */
+
+.nav-toggle.active span:nth-child(1) {
+    transform: translate(10px, 14px);
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: translate(10px, -12px);
+    opacity: 0;
+}
 
 img {
     animation: fadeIn 1s ease-out forwards;
@@ -48,7 +119,14 @@ h1 {
     color: #ffffff
 }
 
-h1, h2, p {
+h2 {
+    animation-name: fadeInUp;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+
+h1, p {
     animation-name: fadeInUp;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
@@ -73,23 +151,6 @@ body {
     font-family: 'Work Sans', sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.nav-container {
-    display: flex;
-    position: fixed;
-    height:85px;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; 
-    background-color: #fff; 
-    justify-content: space-between; /* This makes sure the h1 and the nav list are spaced apart */
-    align-items: center; /* Aligns items vertically in the center */
-    padding: 20px;
-    background-color: rgb(40, 44, 106, 0.05);
-    color: #fff;
-    transition: all 0.3s ease; /* smooth transition for size and background change */
 }
 
 header h1 {
@@ -136,7 +197,6 @@ nav li a:hover {
 
 .home-page .hero-text p:first-of-type {
     flex: 1;
-    text-align: left;  /* left-align the text */
     color: #C2BAFF;  /* set the text color */
     font-weight: 600;  /* make the text semi-bold */
     margin-bottom: -28px;  /* give it some space below before the h2 */
@@ -221,12 +281,90 @@ footer {
         margin-left: 10%; /* Reduced margin for smaller screens */
         margin-right: 5%;
     }
+
+
+    .hero-text img {
+        padding-top: 85px;
+        transition: all 0.3s ease;
+    }
 }
 
-@media screen and (max-width: 900px) {
-    .hero-text {
-        margin-left: 7%; /* Further reduced margin for even smaller screens */
-        margin-right: 4%;
+@media screen and (max-width: 1100px) {
+    .nav-list-wrapper {
+        display: none; /* Hide the nav list */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 30px;
+        background-color: rgba(40, 44, 106, 0.2); /* A slight transparency */
+        width: 200px;
+        z-index: 1001; /* To ensure it's on top */
+    }
+
+    .nav-list-wrapper.show {
+        display: flex; /* Show the nav list when required */
+    }
+
+    nav li {
+        text-align: right;
+    }
+
+    .nav-toggle {
+        display: flex; /* Show the button */
+    }
+
+    .nav-container {
+        background: rgba(40, 44, 106, 0.8); /* To blur whatever is behind it */
+        backdrop-filter: blur(10px);
+        height: 17px; /* smaller height */
+        margin-bottom: 0px;
+        transition: all 0.3s ease;
+    }
+
+    .hero-text img {
+        padding-top: 25px;
+        transition: all 0.3s ease;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .hero {
+        flex-direction: column; /* Stack text and image vertically on very small screens */
+        transition: all 0.3s ease;
+    }
+
+    .hero-image img {
+        max-width: 400px;
+        height: auto;  /* Maintain the image's aspect ratio */
+        border-radius: 10%;
+        transition: all 0.3s ease;
+    }
+
+    .hero-text, .hero-image {
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center; /* Center-align text for mobile layout */
+        transition: all 0.3s ease;
+    }
+
+    .hero-text p:first-of-type {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .clinical-research-page .hero-image img {
+        margin-top: 0;
+    }
+
+    p {
+        font-size: 14.4px;
+        color: #ffffff;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
     }
 }
 
@@ -245,10 +383,20 @@ footer {
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+        padding-bottom: 30px;
     }
 
     .clinical-research-page .hero-image img {
         margin-top: 0;
+    }
+
+    p {
+        font-size: 14.4px;
+        color: #ffffff;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
     }
     
 }
