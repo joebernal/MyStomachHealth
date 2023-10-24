@@ -18,6 +18,15 @@
     }
 }
 
+
+.nav-container.small-navbar {
+    height: 17px; /* smaller height */
+    background-color: rgb(40, 44, 106, 0.80);
+    transition: all 0.3s ease; /* smooth transition for size and background change */
+}
+
+
+
 img {
     animation: fadeIn 1s ease-out forwards;
 }
@@ -54,6 +63,7 @@ h1, h2, p {
 h1 a {
     font-size: 24px;
     font-weight: 600;
+    text-decoration-line: none;
     color: #ffffff;
     margin-top: -30px;
     margin-bottom: -30px;
@@ -67,11 +77,19 @@ body {
 
 .nav-container {
     display: flex;
+    position: fixed;
+    height:85px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background-color: #fff; 
     justify-content: space-between; /* This makes sure the h1 and the nav list are spaced apart */
     align-items: center; /* Aligns items vertically in the center */
     padding: 20px;
-    background-color: #282C6A;
+    background-color: rgb(40, 44, 106, 0.05);
     color: #fff;
+    transition: all 0.3s ease; /* smooth transition for size and background change */
 }
 
 header h1 {
@@ -96,6 +114,7 @@ nav ul {
 
 nav li a {
     text-decoration: none;
+    font-size: 18px;
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
@@ -143,6 +162,7 @@ nav li a:hover {
     max-width: 70px;
     height: auto;  /* Maintain the image's aspect ratio */
     border-radius: 50px;
+    padding-top: 85px;
     animation: fadeInUp;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
