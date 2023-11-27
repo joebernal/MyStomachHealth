@@ -209,7 +209,7 @@ nav li a:hover {
     flex: 1;
     text-align: left;  /* left-align the text */
     max-width: 473px;  /* maximum width of the text box */
-    margin-left: 15%;  /* 15% of the parent's width */
+    margin-left: 13%;  /* 15% of the parent's width */
     margin-right: 8%;  /* reduced margin to keep similar ratio as previously */
 }
 
@@ -280,6 +280,7 @@ footer {
     .hero-text {
         margin-left: 10%; /* Reduced margin for smaller screens */
         margin-right: 5%;
+        transition: all 0.3s ease;
     }
 
 
@@ -293,21 +294,28 @@ footer {
     .nav-list-wrapper {
         display: none; /* Hide the nav list */
         flex-direction: column;
+        justify-content: start;
         position: absolute;
         top: 100%;
-        right: 30px;
-        background-color: rgba(40, 44, 106, 0.2); /* A slight transparency */
-        width: 200px;
+        left: 0px;
+        background-color: rgba(40, 44, 106, 1.0); /* A slight transparency */
+        height: 90vh;
+        width: 100%;
         z-index: 1001; /* To ensure it's on top */
     }
 
+
     .nav-list-wrapper.show {
-        display: flex; /* Show the nav list when required */
+        display: grid; /* Show the nav list when required */
     }
 
-    nav li {
-        text-align: right;
+    .nav-list-wrapper > nav > ul {
+        display: flex;
+        flex-direction: column;
+        padding-top: 55px;
+        padding-left: 40px;
     }
+
 
     .nav-toggle {
         display: flex; /* Show the button */
@@ -330,24 +338,21 @@ footer {
 @media screen and (max-width: 960px) {
     .hero {
         flex-direction: column; /* Stack text and image vertically on very small screens */
-        transition: all 0.3s ease;
     }
 
     .hero-image img {
         max-width: 400px;
         height: auto;  /* Maintain the image's aspect ratio */
         border-radius: 10%;
-        transition: all 0.3s ease;
     }
 
     .hero-text, .hero-image {
         margin-left: 0;
         margin-right: 0;
         text-align: center; /* Center-align text for mobile layout */
-        transition: all 0.3s ease;
     }
 
-    .hero-text p:first-of-type {
+    .home-page .hero-text p:first-of-type {
         margin-left: auto;
         margin-right: auto;
         text-align: center;
@@ -366,6 +371,10 @@ footer {
     .hero-text h2 {
         font-size: 28px;
     }
+
+    .clinical-research-page .hero-text h2 {
+        margin-bottom: 0px;
+    }
 }
 
 @media screen and (max-width: 770px) {
@@ -379,7 +388,7 @@ footer {
         text-align: center; /* Center-align text for mobile layout */
     }
 
-    .hero-text p:first-of-type {
+    .home-page .hero-text p:first-of-type {
         margin-left: auto;
         margin-right: auto;
         text-align: center;

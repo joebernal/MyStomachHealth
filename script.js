@@ -7,7 +7,7 @@ window.addEventListener("scroll", function() {
     var scrollY = window.scrollY;
 
     // If we've scrolled past 85px, add the 'small-navbar' class
-    if (window.scrollY >= 40) {
+    if (window.scrollY >= 85) {
         navbar.classList.add("small-navbar");
     }
     
